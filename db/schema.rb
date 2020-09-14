@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_14_205752) do
+ActiveRecord::Schema.define(version: 2020_09_14_214500) do
 
   create_table "airports", force: :cascade do |t|
     t.string "code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["code"], name: "index_airports_on_code", unique: true
+  end
+
+  create_table "flights", force: :cascade do |t|
+    t.integer "origin_id"
+    t.integer "destination_id"
+    t.datetime "departure_time"
+    t.integer "duration"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["destination_id"], name: "index_flights_on_destination_id"
+    t.index ["origin_id"], name: "index_flights_on_origin_id"
   end
 
 end
