@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Airport.delete_all
+
+def airport_codes(n, codes = [])
+  codes + ('AAA'..'ZZZ').to_a.sample(n)
+end
+
+airport_codes(15, %w[LGA SFO]).each do |code|
+  Airport.create(code: code)
+end
