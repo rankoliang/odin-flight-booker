@@ -1,29 +1,29 @@
 <h1>Search Flights</h1>
 
 
-<%= form_with(model: Flight, url: flights_index_path, method: :get, local: true) do |f| %>
+<%= form_tag(flights_path, method: :get, local: true) do |f| %>
   <div>
-    <%= f.label :origin_id, 'Origin' %>
-    <%= f.collection_select(:origin_id, @airports, :id, :code) %>
+    <%= label_tag :origin_id, 'Origin' %>
+    <%= select_tag :origin_id, options_from_collection_for_select(@airports, :id, :code) %>
   </div>
 
   <div>
-    <%= f.label :destination_id, 'Destination' %>
-    <%= f.collection_select(:destination_id, @airports, :id, :code) %>
+    <%= label_tag :destination_id, 'Destination' %>
+    <%= select_tag :origin_id, options_from_collection_for_select(@airports, :id, :code) %>
   </div>
 
   <div>
-    <%= f.label :passengers %>
-    <%= f.select(:passengers, 1..4) %>
+    <%= label_tag :passengers %>
+    <%= select_tag :passengers, options_for_select(1..4) %>
   </div>
 
   <div>
-    <%= f.label :departure_date, 'Departure Date' %>
-    <%= f.select(:departure_date, Flight.departure_dates.map(&:departure_date).uniq) %>
+    <%= label_tag :departure_date, 'Departure Date' %>
+    <%= select_tag :departure_date, options_for_select(@departure_dates) %>
   </div>
-  
+
   <div>
-    <%= f.submit 'Search' %>
+    <%= submit_tag 'Search' %>
   </div>
 <% end %>
 

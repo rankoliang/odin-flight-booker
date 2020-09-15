@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   root 'flights#index'
 
-  get 'flights/index'
+  resources 'flights', only: %i[index]
 end
