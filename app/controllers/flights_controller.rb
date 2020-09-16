@@ -23,6 +23,4 @@ class FlightsController < ApplicationController
       destination_id: params[:destination_id] }
       .reject { |_, field| field.blank? }
   end
-
-  def flight_results; end
 end
