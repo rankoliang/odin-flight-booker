@@ -27,8 +27,9 @@
 <% end %>
 
 <% unless @flight_results.nil? || @flight_results.empty? %>
+  <%= hidden_field_tag :passengers, @passengers %>
   <h2>Available Flights</h2>
-  <%= form_tag(root_path, method: :get, local: true) do %>
+  <%= form_tag(new_booking_path, method: :get, local: true) do %>
   <ul style="list-style-type:none;padding-left:0;">
     <%= render @flight_results %>
   </ul>
