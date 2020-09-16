@@ -1,7 +1,8 @@
 <li>
+  <%= radio_button_tag :flight_id, flight.id %>
   From: <%= flight.origin.code %>,
   To: <%= flight.destination.code %>
-  <ul>
+  <ul style="list-style-type:none;">
     <li>
       Departs at: <%= flight.departure_time %>
     </li>
