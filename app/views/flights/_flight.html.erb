@@ -1,0 +1,12 @@
+<li>
+  From: <%= flight.origin.code %>,
+  To: <%= flight.destination.code %>
+  <ul>
+    <li>
+      Departs at: <%= flight.departure_time %>
+    </li>
+    <li>
+      Duration: <%= distance_of_time_in_words(flight.duration) %>
+    </li>
+  </ul>
+</li>

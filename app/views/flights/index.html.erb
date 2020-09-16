@@ -1,15 +1,14 @@
 <h1>Search Flights</h1>
 
-
 <%= form_tag(flights_path, method: :get, local: true) do |f| %>
   <div>
     <%= label_tag :origin_id, 'Origin' %>
-    <%= select_tag :origin_id, options_from_collection_for_select(@airports, :id, :code) %>
+    <%= select_tag :origin_id, options_from_collection_for_select(@airports, :id, :code), include_blank: true %>
   </div>
 
   <div>
     <%= label_tag :destination_id, 'Destination' %>
-    <%= select_tag :origin_id, options_from_collection_for_select(@airports, :id, :code) %>
+    <%= select_tag :destination_id, options_from_collection_for_select(@airports, :id, :code), include_blank: true %>
   </div>
 
   <div>
@@ -19,7 +18,7 @@
 
   <div>
     <%= label_tag :departure_date, 'Departure Date' %>
-    <%= select_tag :departure_date, options_for_select(@departure_dates) %>
+    <%= select_tag :departure_date, options_for_select(@departure_dates), include_blank: true %>
   </div>
 
   <div>
@@ -27,3 +26,10 @@
   </div>
 <% end %>
 
+<% unless @flight_results.nil? || @flight_results.empty? %>
+  <h2>Available Flights</h2>
+  <ul>
+    <%= render @flight_results %>
+  </ul>
+  
+<% end %>
