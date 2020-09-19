@@ -1,0 +1,31 @@
+Hello <%= @passenger.name %>,
+
+<h1>Booking Information for <%= @flight.origin.code %> to <%= @flight.destination.code %></h1>
+<ul>
+    <li>
+        From: <%= @flight.origin.code %>
+    </li>
+    <li>
+        To: <%= @flight.destination.code %>
+    </li>
+    <ul>
+        <li>
+            Departs at: <%= @flight.departure_time %>
+        </li>
+        <li>
+            Duration: <%= distance_of_time_in_words(@flight.duration) %>
+        </li>
+    </ul>
+    <li>
+        Passengers
+    </li>
+    <ul>
+        <% @booking.passengers.each do |passenger| %>
+            <li>
+                <%= passenger.name %>
+            </li>
+        <% end %>
+    </ul>
+</ul>
+
+View your <%= link_to 'booking', booking_url(@booking) %>

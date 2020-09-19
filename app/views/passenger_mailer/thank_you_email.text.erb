@@ -1,0 +1,11 @@
+Hello <%= @passenger.name %>,
+
+Thank you for booking your flight with us!
+
+Flight information:
+From: <%= @flight.origin.code %>
+To: <%= @flight.destination.code %>
+    Departs at: <%= @flight.departure_time %>
+    Duration: <%= distance_of_time_in_words(@flight.duration) %>
+
+Link to your booking: <%= booking_url(@booking) %>
